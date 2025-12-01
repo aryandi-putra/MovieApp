@@ -20,7 +20,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         // Add your TMDB API key here or in local.properties
-        buildConfigField("String", "TMDB_API_KEY", "\"YOUR_API_KEY_HERE\"")
+        buildConfigField("String", "TMDB_API_KEY", "\"845a0f79064a3c8f0125a389a7ed651c\"")
     }
 
     buildTypes {

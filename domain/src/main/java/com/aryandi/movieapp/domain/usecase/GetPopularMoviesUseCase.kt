@@ -7,19 +7,22 @@ import kotlinx.coroutines.flow.Flow
 
 /**
  * Use case for getting popular movies
- * Encapsulates business logic for fetching popular movies
+ * Extends BaseUseCaseNoParams since it doesn't require parameters
  *
- * Following Single Responsibility Principle - this use case has only one reason to change:
- * if the business rules for fetching popular movies change
+ * Example of Clean Architecture:
+ * - Pure business logic
+ * - Framework independent
+ * - Testable
  */
 class GetPopularMoviesUseCase(
     private val movieRepository: MovieRepository
-) {
+) : BaseUseCaseNoParams<List<Movie>>() {
+
     /**
      * Execute the use case
      * @return Flow of Result containing list of popular movies
      */
-    operator fun invoke(): Flow<Result<List<Movie>>> {
+    override fun execute(): Flow<Result<List<Movie>>> {
         return movieRepository.getPopularMovies()
     }
 }

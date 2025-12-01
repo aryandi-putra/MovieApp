@@ -7,17 +7,22 @@ import kotlinx.coroutines.flow.Flow
 
 /**
  * Use case for getting movie details
- * Encapsulates business logic for fetching detailed information about a specific movie
+ * Extends BaseUseCase with Int parameter (movie ID)
+ *
+ * Example of Single Responsibility Principle:
+ * - One use case = one business operation
+ * - Only fetches movie details
  */
 class GetMovieDetailsUseCase(
     private val movieRepository: MovieRepository
-) {
+) : BaseUseCase<Int, Movie>() {
+
     /**
      * Execute the use case
-     * @param movieId The ID of the movie to fetch
+     * @param params The ID of the movie to fetch
      * @return Flow of Result containing movie details
      */
-    operator fun invoke(movieId: Int): Flow<Result<Movie>> {
-        return movieRepository.getMovieDetails(movieId)
+    override fun execute(params: Int): Flow<Result<Movie>> {
+        return movieRepository.getMovieDetails(params)
     }
 }

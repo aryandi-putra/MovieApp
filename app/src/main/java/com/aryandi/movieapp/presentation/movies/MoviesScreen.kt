@@ -66,6 +66,18 @@ fun MoviesScreen(
                     onRetry = { viewModel.loadMovies() }
                 )
             }
+
+            MoviesUiState.Empty -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = androidx.compose.ui.Alignment.Center
+                ) {
+                    Text(
+                        text = "No movies found",
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
+            }
         }
     }
 }
